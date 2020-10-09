@@ -18,8 +18,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 // Database Setup
-const Todo = require('./db/models/Todo')(sequelize, DataTypes);
-Todo.sync({alter: true}).then(() => console.log('All models synced'))
+const Todo = require('./db/models/Todo')(sequelize, DataTypes); // Defines the table
+Todo.sync({alter: true}).then(() => console.log('All models synced')); // Syncs table to database
 
 // Express routes
 app.get('/', (req, res) => {
