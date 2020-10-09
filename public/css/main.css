@@ -1,8 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-* {
-  font-family: "Bebas Neue";
-}
-
 .sidebar {
   height: 100%;
   width: 250px;
@@ -44,6 +40,23 @@ main {
   margin-left: 85px;
   transition: margin-left 0.5s;
   padding: 5px 30px;
+}
+
+body {
+  padding: 30px;
+}
+
+input[name=title] {
+  width: 565px;
+}
+
+input[type=date] {
+  width: 200px;
+}
+
+textarea {
+  resize: none;
+  font-family: inherit;
 }
 
 /*# sourceMappingURL=main.css.map */
