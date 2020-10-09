@@ -1,0 +1,16 @@
+<head>
+    <%- include('../partials/includes.ejs') %>
+</head>
+<body>
+<%- include('../partials/sidebar.ejs') %>
+
+<main>
+    <h1>New Todo Item</h1>
+    <form method="post" action="/todo/add">
+        <label for="title">Title</label>
+        <input name="title" type="text" required>
+
+        <input type="submit">
+    </form>
+</main>
+</body>
