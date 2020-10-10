@@ -6,7 +6,7 @@ const sequelize = new Sequelize({dialect: 'sqlite', storage: './db/database.sqli
 
 // Test database connection
 try {
-    sequelize.authenticate().then(() => console.log('\x1b[32m', 'Connection to database has been successful', '\x1b[0m'));
+    sequelize.authenticate().then(() => console.log('Connection to database has been successful'));
 } catch (error) {
     console.log('\x1b[31m', 'Unable to connect to database', '\x1b[0m', error);
 }
@@ -51,8 +51,13 @@ app.post('/todo/add', (req, res) => {
         description: req.body.description,
         due: req.body.due
     }).then(() => console.log("Added new todo with title \"" + req.body.title + "\""));
-    res.redirect('/todo');
+    res.redirect(201, '/todo');
 });
 
+// Test route
+app.get('/test', (req,res) => {
+    res.json({message: 'Passed!'});
+})
+
 // Tell express to listen on port 3000
-app.listen(3000, console.log("App listening on 3000"));
+module.exports = app;
