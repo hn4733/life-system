@@ -1,3 +1,14 @@
 language: nodejs
 node_js:
   - node
+before_install:
+  - npm update
+install:
+  - npm install
+jobs:
+  include:
+    - stage: test
+      script: cross-env NODE_ENV=test jest -i check.test.js --silent --detectOpenHandles
+      name: "Check basic testing"
+    - script: cross-env NODE_ENV=test jest -i postroutes.test.js --silent --detectOpenHandles
+      name: "Check post routes"
