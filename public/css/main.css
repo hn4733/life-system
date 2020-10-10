@@ -1,8 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-* {
-  font-family: "Bebas Neue";
-}
-
 .sidebar {
   height: 100%;
   width: 250px;
@@ -44,6 +40,61 @@ main {
   margin-left: 85px;
   transition: margin-left 0.5s;
   padding: 5px 30px;
+}
+
+body {
+  padding: 30px;
+}
+
+input[name=title] {
+  width: 565px;
+}
+
+input[type=date] {
+  width: 200px;
+}
+
+textarea {
+  resize: none;
+  font-family: inherit;
+}
+
+table .button {
+  margin: 0;
+}
+
+.button-danger {
+  background-color: #c0392b;
+  color: white;
+  border: 0;
+}
+
+.button-danger:hover {
+  background-color: #962d22;
+  color: white;
+}
+
+.button-danger:focus {
+  color: white;
+}
+
+table {
+  width: 100%;
+}
+
+.button-success {
+  background-color: #27ae60;
+  color: white;
+  border: 0;
+}
+
+.button-success:hover {
+  background-color: #1e8449;
+  color: white;
+}
+
+.button-success:focus {
+  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,37 @@
+<head>
+    <%- include('../partials/includes.ejs') %>
+</head>
+<body>
+<%- include('../partials/sidebar.ejs') %>
+
+<main>
+    <h1>Todo List</h1>
+
+    <a class="button-primary button" href="/todo/new">New Todo</a>
+
+    <% if (tasks.length) {%>
+    <table>
+    <tr>
+        <th width="25%">Title</th>
+        <th width="50%">Description</th>
+        <th width="10%">Due Date</th>
+        <th width="15%">Actions</th>
+    </tr>
+
+        <% for (var i=0; i<tasks.length; i++) {%>
+        <tr>
+            <td><%= tasks[i].title %></td>
+            <td><%= tasks[i].description %></td>
+            <td><%= tasks[i].due %></td>
+            <td>
+                <a style="float:left;" width="50%" class="button button-danger" href="/todo/delete/<%= tasks[i].id %>">Delete</a>
+<!--                <a style="float: right;" width="50%" class="button button-success" href="/todo/edit/<%= tasks[i].id %>">Edit</a>-->
+            </td>
+        </tr>
+        <%}%>
+    </table>
+    <%} else {%>
+    <p>You have no TODO items! #winning</p>
+    <%}%>
+</main>
+</body>
