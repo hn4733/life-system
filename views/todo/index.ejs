@@ -8,5 +8,20 @@
     <h1>Todo List</h1>
 
     <a class="button-primary button" href="/todo/new">New Todo</a>
+
+    <table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+    </tr>
+        <% for (var i=0; i<tasks.length; i++) {%>
+        <tr>
+            <td><%= tasks.title[i] %></td>
+            <td><%= tasks.description[i] %></td>
+            <td><%= tasks.due[i] %></td>
+        </tr>
+        <%}%>
+    </table>
 </main>
 </body>
