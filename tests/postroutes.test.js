@@ -9,7 +9,7 @@ it("Checks create TODO post", async done => {
         title: "Task title",
         description: "Task description"
       })
-  expect(res.statusCode).toBe(200)
+  expect(res.statusCode).toBe(302)
 
   done()
 })
