@@ -1,0 +1,30 @@
+<head>
+    <%- include('../partials/includes.ejs') %>
+</head>
+<body>
+<%- include('../partials/sidebar.ejs') %>
+
+<main>
+    <h1>New Homework Item</h1>
+    <form method="post" action="/homework/add">
+        <label for="subject">Subject</label>
+        <input name="subject" type="text" required>
+
+        <label for="description">Description</label>
+        <textarea name="description" type="textarea" rows="3" cols="75"></textarea>
+
+        <label for="location">Location</label>
+        <select name="location">
+            <option>Teams (work on Laptop)</option>
+            <option>Teams (work in book)</option>
+            <option>Folder (sheet)</option>
+        </select>
+
+        <label for="due">Due Date</label>
+        <input name="due" type="date">
+
+        </br>
+        <input type="submit">
+    </form>
+</main>
+</body>

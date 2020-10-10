@@ -1,0 +1,44 @@
+<head>
+    <%- include('../partials/includes.ejs') %>
+</head>
+<body>
+<%- include('../partials/sidebar.ejs') %>
+
+<main>
+    <h1>Homework List</h1>
+
+    <a class="button-primary button" href="/homework/new">New Homework</a>
+
+    <% if (homework.length) { %>
+        <table>
+            <tr>
+                <th width="15%">Subject</th>
+                <th width="40%">Description</th>
+                <th width="20%">Location</th>
+                <th width="10%">Due Date</th>
+                <th width="15%">Actions</th>
+            </tr>
+
+            <% for (var i = 0; i < homework.length; i++) { %>
+                <%
+                    var date = homework[i].due;
+                    var formatted = [date.getDate(), date.getMonth()+1, date.getFullYear()].join('-');
+                %>
+                <tr>
+                    <td><%= homework[i].subject %></td>
+                    <td><%= homework[i].description %></td>
+                    <td><%= homework[i].location %></td>
+                    <td><%= formatted %></td>
+                    <td>
+                        <a style="float:left;" width="50%" class="button button-danger"
+                           href="/homework/delete/<%= homework[i].id %>">Delete</a>
+                        <!--                <a style="float: right;" width="50%" class="button button-success" href="/homework/edit/<%= homework[i].id %>">Edit</a>-->
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+    <% } else { %>
+        <p>You have no homework! #winning</p>
+    <% } %>
+</main>
+</body>
