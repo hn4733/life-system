@@ -36,7 +36,14 @@ app.get('/todo/new', (req, res) => {
     res.render('todo/new');
 });
 // TODO: Add todo:id or todo:slug to routes
-
+app.get('/todo/delete/:id', (req,res) => {
+   Todo.destroy({
+       where: {
+           id: req.params.id
+       }
+   });
+   res.redirect('/todo');
+});
 // Post requests
 app.post('/todo/add', (req, res) => {
     Todo.create({
