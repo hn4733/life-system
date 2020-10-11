@@ -7,6 +7,11 @@ const schedule = require('node-schedule');
 const qs = require('qs');
 const axios = require('axios');
 
+process.on('unhandledRejection', (reason, p) => {
+    console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+    // application specific logging, throwing an error, or other logic here
+});
+
 // Test database connection
 try {
     sequelize.authenticate().then(() => console.log('Connection to database has been successful'));
@@ -39,7 +44,7 @@ const sendNotification = async () => {
         for (let i = 0; i < homework.length; i++) {
             axios({
                 method: "post",
-                url: "",
+                url: "https://api.pushed.co/1/push",
                 data: qs.stringify({
                     app_key: "QlEb5FF9JliSHpnW2SzX",
                     app_secret: "WvsXjK0oE4hD4ACPjSSkGzkIvRtooHjBexWcvl1qdL4yGjyFUFgUuCpIuIGMRb1z",
@@ -54,6 +59,7 @@ const sendNotification = async () => {
         }
     }
 }
+
 
 
 
