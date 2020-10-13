@@ -1,0 +1,23 @@
+<head>
+    <%- include('../partials/includes.ejs') %>
+</head>
+<body>
+<%- include('../partials/sidebar.ejs') %>
+
+<main>
+    <h1>New Todo Item</h1>
+    <form method="post" action="/todo/add">
+        <label for="title">Title</label>
+        <input name="title" type="text" value="<%= todo.title %>" required>
+
+        <label for="description">Description</label>
+        <textarea name="description" type="textarea" rows="3" cols="75"><%= todo.description %></textarea>
+
+        <label for="due">Due Date</label>
+        <input name="due" type="date" value="<%= todo.due %>">
+
+        </br>
+        <input type="submit">
+    </form>
+</main>
+</body>

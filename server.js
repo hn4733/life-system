@@ -83,6 +83,14 @@ app.get('/todo/delete/:id', (req, res) => {
     });
     res.redirect('/todo');
 });
+app.get('/todo/edit/:id', (req,res) => {
+    let todo = Todo.findAll({
+        where: {
+            id: req.params.id
+        }
+    });
+    res.render('todo/edit', {todo: todo});
+});
 // Homework routes
 app.get('/homework', async (req, res) => {
     let homework = await Homework.findAll();
