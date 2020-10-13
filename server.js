@@ -116,6 +116,9 @@ app.post('/todo/add', (req, res) => {
     }).then(() => console.log("Added new \"" + req.body.subject + "\"" + "homework"));
     res.redirect('/todo');
 });
+app.post('/todo/edit/:id', (req,res) => {
+    Todo
+});
 app.post('/homework/add', (req, res) => {
     Homework.create({
         subject: req.body.subject,
