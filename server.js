@@ -118,23 +118,16 @@ app.post('/todo/add', (req, res) => {
     res.redirect('/todo');
 });
 app.post('/todo/edit/:id', (req,res) => {
-    Todo.findAll({
+    Todo.update({
+        title: req.body.title,
+        description: req.body.description,
+        due: req.body.due
+    }, {
         where: {
             id: req.params.id
         }
-    }).then(todo => {
-        if (todo) {
-            todo.update({
-                title: req.body.title,
-                description: req.body.description,
-                due: req.body.due
-            });
-            res.redirect('/todo');
-        }
-        else {
-            res.send('Failed to edit');
-        }
     });
+    res.redirect('/todo');
 });
 app.post('/homework/add', (req, res) => {
     Homework.create({
