@@ -89,7 +89,6 @@ app.get('/todo/edit/:id', async (req,res) => {
             id: req.params.id
         }
     });
-    console.log(todo);
     res.render('todo/edit', {todo: todo});
 });
 // Homework routes
@@ -147,6 +146,7 @@ app.get('/test', (req, res) => {
 function formatDate(date) {
     let today = new Date();
     let tomorrow = new Date();
+    console.log(date);
     tomorrow.setDate(today.getDate() + 1);
     if (date.getDate() == today.getDate() &&
         date.getMonth() == today.getMonth() &&
@@ -156,6 +156,8 @@ function formatDate(date) {
         date.getMonth() == tomorrow.getMonth() &&
         date.getFullYear() == tomorrow.getFullYear()) {
         return "tomorrow";
+    } else if (date == null || date == undefined) {
+        return "N/A";
     } else {
         return [date.getDay(), date.getMonth() + 1, date.getFullYear()].join('-');
     }

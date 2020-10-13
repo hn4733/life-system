@@ -22,14 +22,17 @@
             <%
                 var date = tasks[i].due;
                 var formatted = [date.getDate(), date.getMonth()+1, date.getFullYear()].join('-');
+                if (formatted == "NaN-NaN-NaN") {
+                    var formatted = "None"
+                }
             %>
         <tr>
             <td><%= tasks[i].title %></td>
             <td><%= tasks[i].description %></td>
             <td><%= formatted %></td>
             <td>
-                <a style="float:left;" width="50%" class="button button-danger" href="/todo/delete/<%= tasks[i].id %>">Delete</a>
-                <a style="float: right;" width="50%" class="button button-success" href="/todo/edit/<%= tasks[i].id %>">Edit</a>
+                <a style="float:left;" width="50%" class="button button-danger" href="/todo/delete/<%= tasks[i].id %>">D</a>
+                <a style="float: right;" width="50%" class="button button-success" href="/todo/edit/<%= tasks[i].id %>">E</a>
             </td>
         </tr>
         <%}%>
