@@ -83,12 +83,13 @@ app.get('/todo/delete/:id', (req, res) => {
     });
     res.redirect('/todo');
 });
-app.get('/todo/edit/:id', (req,res) => {
-    let todo = Todo.findAll({
+app.get('/todo/edit/:id', async (req,res) => {
+    let todo = await Todo.findAll({
         where: {
             id: req.params.id
         }
     });
+    console.log(todo);
     res.render('todo/edit', {todo: todo});
 });
 // Homework routes
@@ -121,7 +122,7 @@ app.post('/todo/edit/:id', (req,res) => {
         where: {
             id: req.params.id
         }
-    }).on('success', function(todo) {
+    }).then(todo => {
         if (todo) {
             todo.update({
                 title: req.body.title,
