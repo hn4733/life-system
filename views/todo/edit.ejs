@@ -6,7 +6,7 @@
 
 <main>
     <h1>New Todo Item</h1>
-    <form method="post" action="/todo/add">
+    <form method="post" action="/todo/edit/<%= todo.id %>">
         <label for="title">Title</label>
         <input name="title" type="text" value="<%= todo.title %>" required>
 
