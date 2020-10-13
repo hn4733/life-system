@@ -83,6 +83,14 @@ app.get('/todo/delete/:id', (req, res) => {
     });
     res.redirect('/todo');
 });
+app.get('/todo/edit/:id', async (req,res) => {
+    let todo = await Todo.findAll({
+        where: {
+            id: req.params.id
+        }
+    });
+    res.render('todo/edit', {todo: todo});
+});
 // Homework routes
 app.get('/homework', async (req, res) => {
     let homework = await Homework.findAll();
@@ -108,6 +116,18 @@ app.post('/todo/add', (req, res) => {
     }).then(() => console.log("Added new \"" + req.body.subject + "\"" + "homework"));
     res.redirect('/todo');
 });
+app.post('/todo/edit/:id', (req,res) => {
+    Todo.update({
+        title: req.body.title,
+        description: req.body.description,
+        due: req.body.due
+    }, {
+        where: {
+            id: req.params.id
+        }
+    });
+    res.redirect('/todo');
+});
 app.post('/homework/add', (req, res) => {
     Homework.create({
         subject: req.body.subject,
@@ -126,6 +146,7 @@ app.get('/test', (req, res) => {
 function formatDate(date) {
     let today = new Date();
     let tomorrow = new Date();
+    console.log(date);
     tomorrow.setDate(today.getDate() + 1);
     if (date.getDate() == today.getDate() &&
         date.getMonth() == today.getMonth() &&
@@ -135,6 +156,8 @@ function formatDate(date) {
         date.getMonth() == tomorrow.getMonth() &&
         date.getFullYear() == tomorrow.getFullYear()) {
         return "tomorrow";
+    } else if (date == null || date == undefined) {
+        return "N/A";
     } else {
         return [date.getDay(), date.getMonth() + 1, date.getFullYear()].join('-');
     }
