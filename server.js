@@ -61,8 +61,6 @@ const sendNotification = async () => {
 }
 
 
-
-
 // Express routes
 app.get('/', (req, res) => {
     res.render('index');
@@ -107,6 +105,15 @@ app.get('/homework/delete/:id', (req, res) => {
     });
     res.redirect('/homework');
 });
+app.get('/homework/edit/:id', async (req,res) => {
+    let homework = await Homework.findAll({
+        where: {
+            id: req.params.id
+        }
+    });
+    console.log(homework);
+    res.render('homework/edit', {homework: homework});
+});
 // Post requests
 app.post('/todo/add', (req, res) => {
     Todo.create({
@@ -136,6 +143,19 @@ app.post('/homework/add', (req, res) => {
         due: req.body.due
     }).then(() => console.log("Added new homework with title \"" + req.body.title + "\""));
     res.redirect('/homework');
+});
+app.post('/homework/edit/:id', (req, res) => {
+    Homework.update({
+        title: req.body.title,
+        description: req.body.description,
+        location: req.body.location,
+        due: req.body.due
+    }, {
+        where: {
+            id: req.params.id
+        }
+    });
+    res.redirect('homework');
 });
 
 // Test route
