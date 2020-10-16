@@ -6,7 +6,7 @@
 
 <main>
     <h1>New Homework Item</h1>
-    <form method="post" action="/homework/edit/<%= homework[0].id %>">
+    <form method="post" action="/homework/edit/<%=homework[0].id%>">
         <label for="subject">Subject</label>
         <input name="subject" type="text" value="<%= homework[0].subject %>" required>
 

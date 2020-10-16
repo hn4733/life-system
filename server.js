@@ -111,7 +111,7 @@ app.get('/homework/edit/:id', async (req,res) => {
             id: req.params.id
         }
     });
-    console.log(homework);
+    console.log(homework[0]);
     res.render('homework/edit', {homework: homework});
 });
 // Post requests
@@ -127,7 +127,7 @@ app.post('/todo/edit/:id', (req,res) => {
     Todo.update({
         title: req.body.title,
         description: req.body.description,
-        due: req.body.due
+        due: req.body.duek
     }, {
         where: {
             id: req.params.id
